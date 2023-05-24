@@ -1,9 +1,9 @@
 ## Website-on-Weather-forestaing
 The project aims to create a web application that provides detailed weather forecast information for a specific region. Users will have the ability to search for different locations and view weather data for at least one week, including temperature, humidity, wind speed, and precipitation. The goal is to develop a user-friendly interface that allows users to easily access and understand weather forecasts.
----------------
+
 ### Project Scope and Objectivies:
 The scope of the project encompasses the development of a web application that provides weather forecast details for a specific region. The application will allow users to search for different locations and view weather data for at least one week. The project's objectives include designing a user-friendly interface, integrating weather APIs to fetch real-time data, implementing data visualization techniques for presenting weather information, ensuring responsiveness across various devices, and delivering accurate and up-to-date weather forecasts. The project aims to provide users with a seamless experience in accessing and understanding weather forecast details for their desired locations.
-----
+
 ### Technologies Used:
 The project will employ a range of technologies including:
 •	HTML5: For structuring the web pages and organizing the content.
