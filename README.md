@@ -29,3 +29,10 @@ The project will employ a range of technologies including:
 
 These features collectively provide users with a comprehensive and user-friendly weather forecasting experience, enabling them to make informed decisions based on accurate and up-to-date weather information.
 
+### Who Iam I ?
+ 
+ My Name is Anurag Arvelliwar And iam the student of YCCE college, on the other side , Iam also a learner at Innnovation for me solutions ..
+ and Iam also passonate about learning new skills to improve the best skillsets..
+----
+ ### Other useful links
+https://www.linkedin.com/in/anurag-arvelliwar-8a8b27201/
