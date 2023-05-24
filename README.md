@@ -11,7 +11,7 @@ The project will employ a range of technologies including:
 •	JavaScript: To handle the interactivity of the application and manipulate the weather data.
 •	Weather APIs: To fetch real-time weather data from reliable sources.
 •	Data visualization libraries: To present weather data in a graphical and easily understandable format.
-----
+
 ### Weather Forecasting Features:
 1.	Location-based Forecasting: The application allows users to search for specific locations and retrieve weather forecasts tailored to those locations. It provides the ability to enter a city name, ZIP code, or geographic coordinates to fetch the weather data.
 
