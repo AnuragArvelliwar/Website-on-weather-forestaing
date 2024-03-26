@@ -1,5 +1,5 @@
 
-## Website-on-Weather-forestaing
+## Weather-forestaing
 The project aims to create a web application that provides detailed weather forecast information for a specific region. Users will have the ability to search for different locations and view weather data for at least one week, including temperature, humidity, wind speed, and precipitation. The goal is to develop a user-friendly interface that allows users to easily access and understand weather forecasts.
 # "Simple Weather Application using HTML, CSS &amp; JavaScript"
 
