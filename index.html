@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <script src="https://kit.fontawesome.com/321ecea12b.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" href="A:\html apna clg\we logo.png" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <div class="app-wrap">
+    <header>
+      <input type="text" autocomplete="off" class="search-box" placeholder="&#xF002; Search for cities"
+        style="font-family:Arial,FontAwesome" />
+    </header>
+    <main>
+      <div class="item">
+        <li class="sidenav"><i class="fa-solid fa-sun"></i></li>
+        <li class="sidenav"><i class="fa-sharp fa-solid fa-snowflake"></i><span class="label">weather</span></li>
+        <li class="sidenav"><i class="fa-solid fa-list"></i><a
+            href="https://www.weather-forecast.com/countries">Cities</a></li>
+        <li class="sidenav"><i class="fa-solid fa-map"></i><a href=https://www.weather-forecast.com/maps/India>Map</a>
+        </li>
+        <li class="sidenav"><i class="fa-solid fa-gear"></i><span class="label">settings</span></li>
+      </div>
+      <div class="card">
+        <section class="location">
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weatahericon">
+          <div class="city">New Delhi, IN</div>
+          <div id="day">today</div>
+          <div id="date">20 March 2023</div>
+        </section>
+        <div class="current">
+          <div class="temp">20<span>°c</span></div>
+          <div class="weather">Sunny</div>
+          <div class="hi-low">13°c / 16°c</div>
+        </div>
+      </div>
+      <div class="bx">
+        <div id="box"><i class="fa-solid fa-cloud"></i>
+          <p>Clouds</p><b class="clouds"></b>
+        </div>
+        <div id="box"><i class="fa-solid fa-wind"></i>
+          <p>Wind</p><b class="wind"></b>
+        </div>
+        <div id="box"><i class="fa-solid fa-eye-low-vision"></i>
+          <p>Visibility</p> <b class="visibility"></b>
+        </div>
+        <div id="box"><i class="fa-solid fa-plant-wilt"></i>
+          <p>Humidity</p> <b class="humidity"></b>
+        </div>
+        <div id="box"><i class="fa-solid fa-temperature-three-quarters"></i>
+          <p>Feels_like</p> <b class="feels_like"></b>
+        </div>
+        <div id="box">
+          <p>Timezone</p> <b class="timezone"></b>
+        </div>
+        <div id="box"><i class="fa-solid fa-clouds-sun"></i>
+          <p>Pressure</p> <b class="pressure"></b>
+        </div>
+        <div id="box"><i class="fa-thin fa-cloud-sun"></i>
+          <p>Sunset</p> <b class="sunset"></b>
+        </div>
+      </div>
+      <div class="section">
+        <div class="container1">
+          <span>Tomorrow</span>
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weicon">
+          <div class="Day1"> sunny </div>
+          <div class="hl1">0°c / 0°c</div>
+        </div>
+        <hr>
+        <div class="container2">
+          <span>Day 2</span>
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weicon2">
+          <div class="Day2"> sunny </div>
+          <div class="hl2">0°c / 0°c</div>
+        </div>
+        <hr>
+        <div class="container3">
+          <span>Day 3</span>
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weicon3">
+          <div class="Day3"> sunny </div>
+          <div class="hl3">0°c / 0°c</div>
+        </div>
+        <hr>
+        <div class="container4">
+          <span>Day 4</span>
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weicon4">
+          <div class="Day4"> sunny </div>
+          <div class="hl4">0°c / 0°c</div>
+        </div>
+        <hr>
+        <div class="container5">
+          <span>Day 5</span>
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weicon5">
+          <div class="Day5"> sunny </div>
+          <div class="hl5">0°c / 0°c</div>
+        </div>
+        <hr>
+        <div class="container6">
+          <span>Day 6</span>
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weicon6">
+          <div class="Day6"> sunny </div>
+          <div class="hl6">0°c / 0°c</div>
+        </div>
+        <hr>
+        <div class="container7">
+          <span>Day 7</span>
+          <img src="A:\html apna clg\Simple-Weather-App-master\we images\weather logo.png" class="weicon7">
+          <div class="Day7"> sunny </div>
+          <div class="hl7">0°c / 0°c</div>
+        </div>
+    </main>
+  </div>
+  </main>
+  <script>
+    const apiKey = "5d184c1bfb79c45bb631d1cece068ea3";
+    // const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=";
+    //  const apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=";
+
+    // const searchbox = document.querySelector(".search-box input");
+    const searchbox = document.querySelector('.search-box');
+    searchbox.addEventListener('keypress', setQuery);
+    const weataherIcon = document.querySelector(".weatahericon");
+
+    function setQuery(evt) {
+      if (evt.keyCode == 13) {
+        checkWeather(searchbox.value);
+      }
+    }
+
+    async function checkWeather(city) {
+      const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+      var data = await response.json()
+
+      console.log(data);
+      document.querySelector(".clouds").innerHTML = data.list[0].clouds.all + "%";
+      document.querySelector(".city").innerText = `${data.city.name}, ${data.city.country}`;
+      document.querySelector(".temp").innerHTML = Math.round(data.list[0].main.temp) + "°c";
+      document.querySelector(".feels_like").innerHTML = data.list[0].main.feels_like + "°";
+      document.querySelector(".humidity").innerHTML = data.list[0].main.humidity + "%";
+      document.querySelector(".visibility").innerText = data.list[0].visibility + "Km";
+      document.querySelector(".wind").innerHTML = data.list[0].wind.speed + " m/s";
+      document.querySelector(".pressure").innerHTML = data.list[0].main.pressure + " hpa";
+      document.querySelector(".timezone").innerHTML = data.list[0].sys.pod+ "ay";
+      document.querySelector(".sunset").innerHTML = data.city.sunset + " hrs";
+
+      if (data.list[0].sys.pod == "d") {
+        timezone = "Day";
+      }
+      else if (data.list[0].sys.pod == "n") {
+        timezone = "Night";
+      }
+
+      document.querySelector(".weather").innerText = data.list[0].weather[0].main;
+      let weatahericon = document.querySelector('.weatahericon');
+      let hilow = document.querySelector('.hi-low');
+      hilow.innerText = `${Math.round(data.list[0].main.temp_max)}°c / ${Math.round(data.list[0].main.temp_min)}°c`;
+
+      document.querySelector('.location .date');
+      date.innerText = data.list[0].dt_txt;
+      const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const d = new Date();
+      let day = weekday[d.getDay()];
+      document.getElementById("day").innerHTML = day;
+
+
+      if (data.list[0].weather[0].main == "Clear") {
+        weataherIcon.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[0].weather[0].main == "Drizzle") {
+        weataherIcon.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[0].weather[0].main == "Rain") {
+        weataherIcon.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/rain-98538_1280.png";
+      }
+      else if (data.list[0].weather[0].main == "Haze") {
+        weataherIcon.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+      else if (data.list[0].weather[0].main == "Clouds") {
+        weataherIcon.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+
+      }
+      // weekly forecast
+
+
+      document.querySelector(".section .Day1").innerText = data.list[8].weather[0].main;
+      document.querySelector(".section .Day2").innerText = data.list[13].weather[0].main;
+      document.querySelector(".section .Day3").innerText = data.list[21].weather[0].main;
+      document.querySelector(".section .Day4").innerText = data.list[29].weather[0].main;
+      document.querySelector(".section .Day5").innerText = data.list[37].weather[0].main;
+      document.querySelector(".section .Day6").innerText = data.list[29].weather[0].main;
+      document.querySelector(".section .Day7").innerText = data.list[37].weather[0].main;
+
+
+      document.querySelector(".hl1").innerHTML = `${Math.round(data.list[8].main.temp_max)}°c / ${Math.round(data.list[8].main.temp_min)}°c`;
+      document.querySelector(".hl2").innerHTML = `${Math.round(data.list[13].main.temp_max)}°c / ${Math.round(data.list[13].main.temp_min)}°c`;
+      document.querySelector(".hl3").innerHTML = `${Math.round(data.list[21].main.temp_max)}°c / ${Math.round(data.list[21].main.temp_min)}°c`;
+      document.querySelector(".hl4").innerHTML = `${Math.round(data.list[29].main.temp_max)}°c / ${Math.round(data.list[29].main.temp_min)}°c`;
+      document.querySelector(".hl5").innerHTML = `${Math.round(data.list[37].main.temp_max)}°c / ${Math.round(data.list[37].main.temp_min)}°c`;
+      document.querySelector(".hl6").innerHTML = `${Math.round(data.list[29].main.temp_max)}°c / ${Math.round(data.list[29].main.temp_min)}°c`;
+      document.querySelector(".hl7").innerHTML = `${Math.round(data.list[37].main.temp_max)}°c / ${Math.round(data.list[37].main.temp_min)}°c`;
+
+
+
+      // list2 tomorrow
+      document.querySelector(".weather").innerText = data.list[8].weather[0].main;
+      let weicon = document.querySelector('.weicon');
+      if (data.list[8].weather[0].main == "Clouds") {
+        weicon.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+      }
+      else if (data.list[8].weather[0].main == "Clear") {
+        weicon.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[8].weather[0].main == "Drizzle") {
+        weicon.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[8].weather[0].main == "Rain") {
+        weicon.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/rain-98538_1280.png";
+      }
+      else if (data.list[8].weather[0].main == "Haze") {
+        weicon.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+
+
+
+      // list 3 day 2
+      document.querySelector(".weather").innerText = data.list[13].weather[0].main;
+      let weicon2 = document.querySelector('.weicon2');
+      if (data.list[13].weather[0].main == "Clouds") {
+        weicon2.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+      }
+      else if (data.list[13].weather[0].main == "Clear") {
+        weicon2.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[13].weather[0].main == "Drizzle") {
+        weicon2.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[13].weather[0].main == "Rain") {
+        weicon2.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/rain-98538_1280.png";
+      }
+      else if (data.list[13].weather[0].main == "Haze") {
+        weicon2.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+
+      // list 4 day 3
+
+      document.querySelector(".weather").innerText = data.list[21].weather[0].main;
+      let weicon3 = document.querySelector('.weicon3');
+      if (data.list[21].weather[0].main == "Clouds") {
+        weicon3.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+      }
+      else if (data.list[21].weather[0].main == "Clear") {
+        weicon3.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[21].weather[0].main == "Drizzle") {
+        weicon3.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[21].weather[0].main == "Rain") {
+        weicon3.src = "A:\html apna clg\Simple-Weather-App-master\we images\rainy-day.png";
+      }
+      else if (data.list[21].weather[0].main == "Haze") {
+        weicon3.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+
+      // 5 day 4
+      document.querySelector(".weather").innerText = data.list[29].weather[0].main;
+      let weicon4 = document.querySelector('.weicon4');
+      if (data.list[29].weather[0].main == "Clouds") {
+        weicon4.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+      }
+      else if (data.list[29].weather[0].main == "Clear") {
+        weicon4.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[29].weather[0].main == "Drizzle") {
+        weicon4.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[29].weather[0].main == "Rain") {
+        weicon4.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/rain-98538_1280.png";
+      }
+      else if (data.list[29].weather[0].main == "Haze") {
+        weicon4.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+
+      //list6 Day5
+      document.querySelector(".weather").innerText = data.list[37].weather[0].main;
+      let weicon5 = document.querySelector('.weicon5');
+      if (data.list[37].weather[0].main == "Clouds") {
+        weicon5.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+      }
+      else if (data.list[37].weather[0].main == "Clear") {
+        weicon5.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[37].weather[0].main == "Drizzle") {
+        weicon5.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[37].weather[0].main == "Rain") {
+        weicon5.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/rain-98538_1280.png";
+      }
+      else if (data.list[37].weather[0].main == "Haze") {
+        weicon5.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+
+      // list 7 Day 6
+      document.querySelector(".weather").innerText = data.list[29].weather[0].main;
+      let weicon6 = document.querySelector('.weicon6');
+      if (data.list[29].weather[0].main == "Clouds") {
+        weicon6.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+      }
+      else if (data.list[29].weather[0].main == "Clear") {
+        weicon6.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[29].weather[0].main == "Drizzle") {
+        weicon6.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[29].weather[0].main == "Rain") {
+        weicon6.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/rain-98538_1280.png";
+      }
+      else if (data.list[29].weather[0].main == "Haze") {
+        weicon6.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+
+      // list 7 day 7
+      document.querySelector(".weather").innerText = data.list[37].weather[0].main;
+      let weicon7 = document.querySelector('.weicon7');
+      if (data.list[37].weather[0].main == "Clouds") {
+        weicon7.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/clouds-98536_640.png";
+      }
+      else if (data.list[37].weather[0].main == "Clear") {
+        weicon7.src = "https://cdn.pixabay.com/photo/2016/04/07/22/09/sun-1314953_640.png";
+      }
+      else if (data.list[37].weather[0].main == "Drizzle") {
+        weicon7.src = "https://cdn.pixabay.com/photo/2017/12/06/05/19/sun-3000986_960_720.png";
+      }
+      else if (data.list[37].weather[0].main == "Rain") {
+        weicon7.src = "https://cdn.pixabay.com/photo/2013/04/01/09/22/rain-98538_1280.png";
+      }
+      else if (data.list[37].weather[0].main == "Haze") {
+        weicon7.src = "https://cdn.pixabay.com/photo/2018/05/31/02/50/weather-3443044_640.png";
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
